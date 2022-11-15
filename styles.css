@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Space Grotesk', Arial,  sans-serif;
+    color:#48484a;
+    font-size:14px;
+   
+}
+
+main{
+    height:100vh;
+} 
+
+.grey-container{
+    background-color: #f2f2f2;
+}
+
+header{
+    max-width:900px;
+    margin:auto;
+    display: grid;
+    grid-template-columns: minmax(0,5fr) minmax(0,4fr);
+    gap:1rem;
+    padding-top:1rem;
+    justify-content: center;
+}
+
+.search-block{
+    display:grid;
+    grid-template-columns: 1fr 90px;
+    width:100%;
+    align-items: center;
+}
+
+.search-block input{
+    padding:0.5rem 1rem;
+    border:none;
+    width:100%;
+    height:2.3rem;
+    border-radius: 5px 0 0 5px;
+    font-family: 'Space Grotesk', sans-serif;
+    color:#48484a;
+    font-size:14px;
+}
+
+button{
+    background-color: #48484a;
+    border-color: #48484a;
+    color: #f2f2f2;
+    border-style:none;
+    border-radius: 0 5px 5px 0;
+    height:2.3rem;
+    padding:0 8px;
+    cursor: pointer;
+}
+
+button[disabled]{
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+
+.search-block input:focus{
+    outline:none;
+    border-color:rgba(72,72,74,.66);
+}
+.not-found{
+    visibility: hidden;
+    grid-column: 1/ span 2;
+    height:20px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color:#eb6e4b;
+    font-size:10px;
+}
+
+.controls{
+    display: flex;
+    border-radius: 5px;
+    background-color: #ececed;
+    width: 6rem;
+    height: 2rem;
+    position: relative
+}
+
+.controls .option{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.controls input {
+    opacity:0;
+    height:0;
+    width:0;
+}
+
+.controls #selected{
+    position: absolute;
+    background-color: #fff;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    top: 4px;
+    /* bottom: 2px; */
+    left:4px;
+    border-radius: 4px;
+    transition:transform 250ms ease-in-out;
+}
+
+.controls .option.left[checked] ~ #selected{
+    transform:translateX(0);
+}
+
+.controls .option.right[checked] ~ #selected{
+    transform:translateX(100%);
+}
+
+.current-weather{
+    max-width:900px;
+    width:100%;
+    padding:2rem 0 1rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    margin:auto;
+    justify-content: space-between;
+    display:none;
+}
+
+.weather-info-container{
+    display:flex;
+    flex-direction: column;
+    gap:2rem;
+}
+
+.city-container span{
+    color:#eb6e4b
+}
+
+.city-container h2{
+    font-size:25px;
+    font-weight:700;
+}
+
+.temp-container .current-temp-container{
+    display: flex;
+    align-items: center;
+}
+
+.temp-container span.current-temp{
+    font-size: 36px;
+    font-weight: 100;
+}
+
+.temp-container span.feels-like{
+    font-weight:700;
+    display:block;
+}
+
+.temp-container span.high-low-temp{
+    display:block;
+}
+
+.other-weather-info-container{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(100px,1fr));
+    align-content: end;
+    gap:1rem;
+}
+
+.forecast-container{
+    max-width:900px;
+    margin:auto;
+    margin-top:2rem;
+    grid-template-columns: minmax(0,5fr) minmax(0,4fr);
+    gap:2rem;
+    display: none;
+}
+
+.loading-msg{
+    grid-column: 1 / -1;
+    justify-self: center;
+}
+
+.hourly-forecast-data{
+    margin-top: 1rem;
+    overflow-x: auto;
+    display: flex;
+    gap:1rem;
+}
+
+.hourly-data{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    gap:1rem;
+}
+
+.hourly-temp,.hourly-time,.daily-data-description{
+    font-size:12px;
+}
+
+.pop{
+    font-size: 10px;
+}
+
+.hourly-data>img{
+    margin-left:-10px;
+}
+
+.daily-forecast-container>h3{
+    padding-left:1rem;
+}
+.daily-forecast-data{
+    margin-top: 1rem;
+    padding-left:1rem;
+    border-left:1px solid #eb6e4b;
+    list-style: none;
+    width:100%;
+}
+.daily-data{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+footer{
+    position: fixed;
+    bottom:0;
+    width:100%;
+    height:70px;
+    background-color:#f2f2f2 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight:700;
+}
+
+footer a,footer a:visited  {
+    text-decoration: none;
+    color:#48484a;
+}
